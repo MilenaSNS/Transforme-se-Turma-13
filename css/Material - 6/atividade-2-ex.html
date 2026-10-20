@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Atividade 2 - Layout Real com Grid</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+    .container {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      grid-template-areas:
+        "header header"
+        "sidebar main"
+        "footer footer";
+      min-height: 400px;
+      gap: 15px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .header {
+      grid-area: header;
+      background-color: #1a1a1a;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 8px;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .sidebar {
+      grid-area: sidebar;
+      background-color: #e0e0e0;
+      color: #333;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar li {
+      margin-bottom: 10px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .sidebar li:hover {
+      color: #0066cc;
+    }
+
+    .main {
+      grid-area: main;
+      background-color: white;
+      color: #333;
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    .main h2 {
+      margin-top: 0;
+      color: #0066cc;
+    }
+
+    .footer {
+      grid-area: footer;
+      background-color: #333;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- HEADER: o topo do site com o logotipo e menu principal -->
+    <div class="header">
+      <h1>🎮 Portal Geek</h1>
+    </div>
+
+    <!-- SIDEBAR: A barra lateral com filtros, links rápidos ou menus extras -->
+    <div class="sidebar">
+      <h3>Categorias</h3>
+      <ul>
+        <li>➔ Lançamentos</li>
+        <li>➔ Análises</li>
+        <li>➔ Dicas e Guias</li>
+        <li>➔ Fórum</li>
+      </ul>
+    </div>
+
+    <div class="main">
+      <h2>The Witcher 3: Por que o jogo continua tão popular?</h2>
+      <p>Mesmo anos após o seu lançamento, o RPG continua atraindo milhares de jogadores diariamente. A riqueza de detalhes do mapa e as missões secundárias envolventes são o grande segredo.</p>
+      <p>Nesta análise, vamos explorar os motivos que fazem este título ser obrigatório na biblioteca de qualquer jogador...</p>
+    </div>
+
+    <div class="footer">
+      © 2026 Portal Geek - Todos os direitos reservados.
+    </div>
+
+  </div>
+
+</body>
+</html>

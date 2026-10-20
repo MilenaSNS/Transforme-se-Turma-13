@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projeto Final CSS</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      padding-top: 70px; /* Espaço para o menu fixo não cobrir o topo */
+      padding-bottom: 50px;
+    }
+
+    /* Caixa padrão para separar cada atividade na tela */
+    section {
+      background-color: white;
+      margin: 30px auto;
+      padding: 30px;
+      max-width: 900px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      border: 1px solid #eaeaea;
+    }
+
+    .titulo-secao {
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      color: #555;
+      font-size: 16px;
+      text-transform: uppercase;
+    }
+
+    /* ==========================================
+        Atividade 3 - Menu Fixo (Parte 1) 
+       ========================================== */
+    .menu-fixo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #1a1a1a;
+      padding: 15px;
+      text-align: center;
+      z-index: 1000;
+    }
+
+    .menu-fixo a {
+      color: #00d2ff; 
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    /* ==========================================
+          Atividade 1 - Seletores e Tipografia
+        ========================================== */
+    .ativ1 h1 {
+      color: #6a1b9a;
+      font-family: Arial, sans-serif;
+      margin-bottom: 15px;
+    }
+
+    .ativ1 p {
+      color: #333;
+      font-size: 18px;
+      text-align: justify;
+      line-height: 1.6;
+    }
+
+    .destaque {
+      background-color: #ffeb3b;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+
+    /* ==========================================
+          Atividade 2 - Box Model
+        ========================================== */
+    .box-model {
+      width: 300px;
+      padding: 20px;
+      border: 5px solid #6a1b9a;
+      margin: 20px auto;
+      box-sizing: border-box;
+      background-color: #f3e5f5;
+      text-align: center;
+      font-weight: bold;
+      color: #333;
+      border-radius: 8px;
+    }
+
+    /* ==========================================
+        Atividade 3 - Posicionamento (Parte 2)
+       ========================================== */
+    .pai-relativo {
+      position: relative;
+      top: 20px;
+      background-color: #e0e0e0;
+      padding: 40px;
+      height: 150px;
+      border: 2px dashed #777;
+      border-radius: 8px;
+    }
+
+    .filho-absoluto {
+      position: absolute;
+      bottom: 15px;
+      right: 15px;
+      background-color: #e74c3c;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+
+    /* ==========================================
+         Atividade 4 - Pseudo-classes e Elementos
+       ========================================== */
+    .btn-pseudo {
+      background-color: #3498db;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-right: 20px;
+    }
+
+    .btn-pseudo:hover {
+      background-color: #2980b9;
+    }
+
+    .btn-pseudo:active {
+      transform: scale(0.9);
+      background-color: #1a5276;
+    }
+
+    .input-pseudo {
+      padding: 10px;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    .input-pseudo:active {
+      border-color: #e74c3c;
+      background-color: #fdedec;
+    }
+
+    .lista-pares {
+      list-style: none;
+      margin-top: 20px;
+      border: 1px solid #ddd;
+      width: 300px;
+      border-radius: 5px;
+    }
+
+    .lista-pares li {
+      padding: 12px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .lista-pares li:nth-child(even) {
+      background-color: #e3f2fd;
+    }
+
+    .titulo-emoji::before {
+      content: "⭐ ";
+    }
+
+    .titulo-emoji::after {
+      content: " ⭐";
+    }
+
+    /* ==========================================
+        Atividade 5 - Flexbox
+       ========================================== */
+    .flex-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 150px;
+      border: 2px solid #333;
+      background-color: #fafafa;
+      border-radius: 8px;
+      gap: 20px;
+    }
+
+    .flex-caixa {
+      padding: 20px 30px;
+      background-color: #27ae60;
+      color: white;
+      font-weight: bold;
+      border-radius: 5px;
+    }
+
+    /* ==========================================
+        Atividade 6 - CSS Grid
+       ========================================== */
+    .grid-container {
+      display: grid;
+      gap: 15px;
+    }
+
+    .grid-item {
+      background-color: #e67e22;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+
+    @media (max-width: 599px) {
+      .grid-container { grid-template-columns: 1fr; }
+    }
+    @media (min-width: 600px) and (max-width: 899px) {
+      .grid-container { grid-template-columns: 1fr 1fr; }
+    }
+    @media (min-width: 900px) {
+      .grid-container { grid-template-columns: 1fr 1fr 1fr; }
+    }
+
+    /* ==========================================
+        Atividade 7 - Transição e Animação
+       ========================================== */
+    .btn-transicao {
+      background-color: #8e44ad;
+      color: white;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-right: 30px;
+      transition: background-color 0.5s ease;
+    }
+
+    .btn-transicao:hover {
+      background-color: #2c3e50;
+    }
+
+    .elemento-pulsar {
+      display: inline-block;
+      background-color: #c0392b;
+      color: white;
+      padding: 15px 30px;
+      border-radius: 30px;
+      font-weight: bold;
+      animation: pulsar-anim 1.2s infinite alternate ease-in-out;
+    }
+
+    @keyframes pulsar-anim {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.15); }
+    }
+
+    /* ==========================================
+     Atividade 8 - Layout Responsivo (Grid Areas)
+       ========================================== */
+    .layout-areas {
+      display: grid;
+      gap: 10px;
+      min-height: 400px;
+      border: 2px solid #ccc;
+      padding: 10px;
+      border-radius: 8px;
+      background-color: #ececec;
+      
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "header"
+        "sidebar"
+        "main"
+        "footer";
+    }
+
+    .area-header { grid-area: header; background-color: #6a1b9a; color: white; padding: 20px; text-align: center; border-radius: 4px; font-weight: bold;}
+    .area-sidebar { grid-area: sidebar; background-color: #34495e; color: white; padding: 20px; border-radius: 4px; }
+    .area-main { grid-area: main; background-color: white; padding: 20px; border-radius: 4px; color: #333; line-height: 1.5;}
+    .area-footer { grid-area: footer; background-color: #2c3e50; color: white; padding: 20px; text-align: center; border-radius: 4px; }
+
+    @media (min-width: 768px) {
+      .layout-areas {
+        grid-template-columns: 200px 1fr;
+        grid-template-areas:
+          "header header"
+          "sidebar main"
+          "footer footer";
+      }
+    }
+
+    /* ==========================================
+        Atividade 9 - Galeria de Imagens
+       ========================================== */
+    .galeria-final {
+      display: grid;
+      gap: 15px;
+    }
+
+    .card-galeria {
+      background-color: white;
+      padding: 30px 15px;
+      text-align: center;
+      border-radius: 8px;
+      font-weight: bold;
+      color: #333;
+      border: 2px solid #eee;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card-galeria:hover {
+      transform: scale(1.05) translateY(-5px);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+      color: #6a1b9a;
+      border-color: #6a1b9a;
+    }
+
+    @media (max-width: 599px) {
+      .galeria-final { grid-template-columns: 1fr; }
+    }
+    @media (min-width: 600px) and (max-width: 899px) {
+      .galeria-final { grid-template-columns: 1fr 1fr; }
+    }
+    @media (min-width: 900px) {
+      .galeria-final { grid-template-columns: 1fr 1fr 1fr; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================
+        Atividade 3 - Menu Fixo (Parte 1)
+       ========================================== -->
+  <nav class="menu-fixo">
+    <a href="#">Home</a>
+    <a href="#">Sobre</a>
+    <a href="#">Projetos</a>
+    <a href="#">Contato</a>
+  </nav>
+
+  <!-- ==========================================
+        Atividade 1 - Seletores e Tipografia
+       ========================================== -->
+  <section class="ativ1">
+    <div class="titulo-secao">Atividade 1 - Seletores</div>
+    <h1>Bem-vindo ao Portal</h1>
+    <p>Nesta página vamos organizar os principais conceitos da nossa <span class="destaque">jornada de estudos</span> em desenvolvimento web. Exploraremos desde estilizações básicas até construções complexas de layout.</p>
+  </section>
+
+  <!-- ==========================================
+        Atividade 2 - Box Model
+       ========================================== -->
+  <section>
+    <div class="titulo-secao">Atividade 2 - Box Model</div>
+    <div class="box-model">
+      Esta caixa possui border-box e está centralizada horizontalmente!
+    </div>
+  </section>
+
+  <!-- ==========================================
+        Atividade 3 - Posicionamento (Parte 2)
+       ========================================== -->
+  <section>
+    <div class="titulo-secao">Atividade 3 - Posicionamento</div>
+    <div class="pai-relativo">
+      Sou o elemento PAI (Relative). Fui deslocado 20px para baixo.
+      
+      <div class="filho-absoluto">
+        Sou o FILHO (Absolute)
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       Atividade 4 - Pseudo-classes e Elementos
+       ========================================== -->
+  <section class="ativ4">
+    <div class="titulo-secao">Atividade 4 - Pseudo-classes</div>
+    
+    <button class="btn-pseudo">Botão Interativo</button>
+    <input type="text" class="input-pseudo" placeholder="Clique e segure (Active)...">
+
+    <h2 class="titulo-emoji" style="margin-top: 30px; color: #333;">Meus Favoritos</h2>
+    
+    <ul class="lista-pares">
+      <li>The Sims 4</li>
+      <li>The Witcher 3</li>
+      <li>Far Cry 5</li>
+      <li>Supernatural</li>
+      <li>The Big Bang Theory</li>
+    </ul>
+  </section>
+
+  <!-- ==========================================
+             Atividade 5 - Flexbox
+       ========================================== -->
+  <section>
+    <div class="titulo-secao">Atividade 5 - Flexbox</div>
+    <div class="flex-container">
+      <div class="flex-caixa">Caixa 1</div>
+      <div class="flex-caixa">Caixa 2</div>
+      <div class="flex-caixa">Caixa 3</div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+               Atividade 6 - CSS Grid
+       ========================================== -->
+  <section>
+    <div class="titulo-secao">Atividade 6 - CSS Grid</div>
+    <div class="grid-container">
+      <div class="grid-item">Item 1</div>
+      <div class="grid-item">Item 2</div>
+      <div class="grid-item">Item 3</div>
+      <div class="grid-item">Item 4</div>
+      <div class="grid-item">Item 5</div>
+      <div class="grid-item">Item 6</div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+        Atividade 7 - Transição e Animação
+       ========================================== -->
+  <section>
+    <div class="titulo-secao">Atividade 7 - Transições</div>
+    <button class="btn-transicao">Hover Suave</button>
+    <div class="elemento-pulsar">OFERTA!</div>
+  </section>
+
+  <!-- ==========================================
+       Atividade 8 - Layout Responsivo (Grid Areas)
+       ========================================== -->
+  <section>
+    <div class="titulo-secao">Atividade 8 - Layout Grid Areas</div>
+    
+    <div class="layout-areas">
+      <div class="area-header">Meu Projeto Pessoal</div>
+      
+      <div class="area-sidebar">
+        Menu Lateral<br><br>
+        - Home<br>
+        - Perfil<br>
+        - Sair
+      </div>
+      
+      <div class="area-main">
+        <strong>Área de Conteúdo Principal</strong><br><br>
+        Se você estiver no computador, verá o menu lateral à esquerda. Se redimensionar para o celular, este texto vai parar debaixo do menu!
+      </div>
+      
+      <div class="area-footer">Desenvolvido por Milena dos Santos</div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+          Atividade 9 - Galeria de Imagens
+       ========================================== -->
+  <section>
+    <div class="titulo-secao">Atividade 9 - Galeria Final</div>
+    
+    <div class="galeria-final">
+      <div class="card-galeria">The Sims 4</div>
+      <div class="card-galeria">The Witcher 3</div>
+      <div class="card-galeria">Far Cry 5</div>
+      <div class="card-galeria">Supernatural</div>
+      <div class="card-galeria">The Big Bang Theory</div>
+      <div class="card-galeria">Eu, a Patroa e as Crianças</div>
+      <div class="card-galeria">Kenan & Kel</div>
+      <div class="card-galeria">O Senhor dos Anéis</div>
+      <div class="card-galeria">De Volta para o Futuro</div>
+      <div class="card-galeria">Desenvolvimento Web</div>
+      <div class="card-galeria">Masterização em CSS</div>
+      <div class="card-galeria">Projetos Front-end</div>
+    </div>
+  </section>
+
+</body>
+</html>

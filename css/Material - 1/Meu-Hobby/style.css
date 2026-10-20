@@ -1,0 +1,26 @@
+body {
+    background-color: lightgray;
+}
+
+h1 {
+    color: blue;
+    text-align: center;
+    font-size: 30px;
+}
+
+p {
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+}
+
+.destaque {
+    background-color: yellow;
+    padding: 10px;
+}
+
+footer {
+    background-color: #333333;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}

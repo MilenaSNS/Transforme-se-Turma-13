@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Geek</title>
+  <style>
+    /* ==========================================
+           CONFIGURAÇÕES GLOBAIS E RESET
+       ========================================== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
+      padding-top: 60px; 
+    }
+
+    /* ==========================================
+            MENU DE NAVEGAÇÃO FIXO (Ativ 3)
+       ========================================== */
+    .nav-principal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #1a1a2e;
+      padding: 15px 0;
+      text-align: center;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+
+    .nav-principal a {
+      color: #00d2ff;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      font-size: 16px;
+      text-transform: uppercase;
+    }
+
+    .nav-principal a:hover {
+      color: #fff;
+    }
+
+    /* ==========================================
+       LAYOUT PRINCIPAL - GRID AREAS (Ativ 8)
+       ========================================== */
+    .site-layout {
+      display: grid;
+      gap: 20px;
+      padding: 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+      min-height: 400px;
+    
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "header"
+        "sidebar"
+        "main"
+        "footer";
+    }
+
+    @media (min-width: 768px) {
+      .site-layout {
+        grid-template-columns: 200px 1fr;
+        grid-template-areas:
+          "header header"
+          "sidebar main"
+          "footer footer";
+      }
+    }
+
+    /* MAPEAMENTO DAS ÁREAS DO GRID */
+    .area-header {
+      grid-area: header;
+      background: linear-gradient(135deg, #6a1b9a, #9b59b6);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+      border-radius: 8px;
+    }
+
+    .area-sidebar {
+      grid-area: sidebar;
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .area-main {
+      grid-area: main;
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .area-footer {
+      grid-area: footer;
+      background-color: #1a1a2e;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      border-radius: 8px;
+    }
+
+    /* ==========================================
+       SELETORES, TIPOGRAFIA E BOX MODEL (Ativ 1 e 2)
+       ========================================== */
+    /* Título H1 estilizado */
+    .titulo-principal {
+      color: #6a1b9a;
+      font-family: Arial, sans-serif;
+      margin-bottom: 15px;
+      font-size: 32px;
+    }
+
+    /* Parágrafo de descrição */
+    .texto-descritivo {
+      color: #333;
+      font-size: 18px;
+      text-align: justify;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    /* Classe destaque */
+    .destaque {
+      background-color: #ffd54f;
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+
+    /* Caixa Box Model Exata */
+    .aviso-importante {
+      width: 300px;
+      padding: 20px;
+      border: 5px solid #6a1b9a;
+      margin: 20px auto;
+      box-sizing: border-box;
+      background-color: #f3e5f5;
+      text-align: center;
+      border-radius: 8px;
+      color: #4a148c;
+      font-weight: bold;
+    }
+
+    /* ==========================================
+       POSICIONAMENTOS: RELATIVE E ABSOLUTE (Ativ 3)
+       ========================================== */
+    .card-review {
+      position: relative;
+      top: 20px; /* Movido 20px para baixo */
+      background-color: #2c3e50;
+      color: white;
+      padding: 30px;
+      border-radius: 8px;
+      margin-bottom: 50px; /* Margem extra para não sobrepor itens abaixo */
+    }
+
+    .badge-nota {
+      position: absolute; /* Filho direto com absolute */
+      top: -15px;
+      right: -15px;
+      background-color: #e74c3c;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 50px;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    /* ==========================================
+       PSEUDO-CLASSES E ANIMAÇÕES (Ativ 4 e 7)
+       ========================================== */
+    .secao-interativa {
+      margin: 40px 0;
+      padding-top: 30px;
+      border-top: 1px solid #eee;
+    }
+
+    .titulo-emoji::before { content: "⭐ "; }
+    .titulo-emoji::after { content: " ⭐"; }
+    .titulo-emoji {
+      color: #333;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .lista-series {
+      list-style: none;
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto 30px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .lista-series li {
+      padding: 15px;
+      font-size: 16px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    /* Linhas pares com fundo */
+    .lista-series li:nth-child(even) {
+      background-color: #f0f4f8;
+    }
+
+    .form-newsletter {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .input-newsletter {
+      padding: 12px;
+      font-size: 16px;
+      border: 2px solid #ccc;
+      border-radius: 6px;
+      width: 250px;
+      outline: none;
+    }
+
+    /* Input com pseudo-classe active */
+    .input-newsletter:active {
+      border-color: #6a1b9a;
+      background-color: #fafafa;
+    }
+
+    /* Botão com transição de cor, hover e active */
+    .btn-assinar {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.4s ease; /* Transição (Ativ 7) */
+    }
+
+    .btn-assinar:hover { background-color: #2980b9; }
+    .btn-assinar:active { transform: scale(0.95); background-color: #1a5276; }
+
+    /* Elemento Pulsar (Ativ 7) */
+    .etiqueta-pulsar {
+      display: inline-block;
+      background-color: #27ae60;
+      color: white;
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 14px;
+      margin-top: 10px;
+      animation: anim-pulsar 1s infinite alternate ease-in-out;
+    }
+
+    @keyframes anim-pulsar {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.15); }
+    }
+
+    /* ==========================================
+              FLEXBOX (Ativ 5)
+       ========================================== */
+    .niveis-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 120px; 
+      border: 2px dashed #ccc; /* Borda para visualização */
+      border-radius: 8px;
+      gap: 15px;
+      margin-bottom: 40px;
+      background-color: #fafafa;
+    }
+
+    .caixa-flex {
+      padding: 15px 25px;
+      background-color: #8e44ad;
+      color: white;
+      font-weight: bold;
+      border-radius: 6px;
+    }
+
+    /* ==========================================
+       CSS GRID - 6 ITENS (Ativ 6)
+       ========================================== */
+    .grid-destaques {
+      display: grid;
+      gap: 15px;
+      margin-bottom: 50px;
+    }
+
+    .item-destaque {
+      background-color: #e67e22;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    /* Media Queries Exatas (Ativ 6) */
+    @media (max-width: 599px) {
+      .grid-destaques { grid-template-columns: 1fr; }
+    }
+    @media (min-width: 600px) and (max-width: 899px) {
+      .grid-destaques { grid-template-columns: 1fr 1fr; }
+    }
+    @media (min-width: 900px) {
+      .grid-destaques { grid-template-columns: 1fr 1fr 1fr; }
+    }
+
+    /* ==========================================
+       GALERIA DE IMAGENS - 12 ITENS (Ativ 9)
+       ========================================== */
+    .galeria-geek {
+      display: grid;
+      gap: 20px;
+    }
+
+    .card-galeria {
+      background-color: #fff;
+      padding: 40px 15px;
+      text-align: center;
+      border-radius: 8px;
+      font-weight: bold;
+      color: #2c3e50;
+      border: 1px solid #ddd;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.3s;
+    }
+
+    /* Efeito Hover na Galeria */
+    .card-galeria:hover {
+      transform: scale(1.05) translateY(-5px);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+      color: #6a1b9a;
+      border-color: #6a1b9a;
+    }
+
+    /* Media Queries Exatas (Ativ 9) */
+    @media (max-width: 599px) {
+      .galeria-geek { grid-template-columns: 1fr; }
+    }
+    @media (min-width: 600px) and (max-width: 899px) {
+      .galeria-geek { grid-template-columns: 1fr 1fr; }
+    }
+    @media (min-width: 900px) {
+      .galeria-geek { grid-template-columns: 1fr 1fr 1fr; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Menu de Navegação Fixo -->
+  <nav class="nav-principal">
+    <a href="#">Home</a>
+    <a href="#">Sobre</a>
+    <a href="#">Projetos</a>
+    <a href="#">Contato</a>
+  </nav>
+
+  <!-- Layout Principal do Site (Grid Areas) -->
+  <div class="site-layout">
+    
+    <!-- Cabeçalho do Grid -->
+    <header class="area-header">
+      <h1>Universo Geek</h1>
+      <p style="margin-top: 10px; opacity: 0.9;">O seu portal de cultura pop e tecnologia</p>
+    </header>
+
+    <!-- Barra Lateral -->
+    <aside class="area-sidebar">
+      <div style="text-align: center; margin-bottom: 20px;">
+        <div style="width: 100px; height: 100px; background-color: #ccc; border-radius: 50%; margin: 0 auto 10px;"></div>
+        <h3 style="color: #6a1b9a;">Milena dos Santos</h3>
+        <p style="color: #777; font-size: 14px; margin-top: 5px;">Desenvolvedora Front-end</p>
+      </div>
+      <hr style="border: 0; border-top: 1px solid #eee; margin: 15px 0;">
+      <p style="font-size: 14px; color: #555; line-height: 1.5;">Apaixonada por The Sims, RPGs clássicos e desenvolvimento web.</p>
+    </aside>
+
+    <!-- Conteúdo Principal -->
+    <main class="area-main">
+      
+      <!-- H1, Parágrafo Justificado e Classe Destaque -->
+      <h1 class="titulo-principal">Sejam bem-vindos ao meu espaço!</h1>
+      <p class="texto-descritivo">
+        Este é um projeto criado para aplicar tudo o que aprendi em <span class="destaque">CSS moderno</span>. 
+        Aqui, organizo minhas dicas de jogabilidade, análises de séries e testes práticos de design responsivo.
+      </p>
+
+      <!-- Box Model Exato Exigido -->
+      <div class="aviso-importante">
+        Aviso: Novo post detalhado sobre The Witcher 3 sai nesta sexta-feira!
+      </div>
+
+      <!-- Posicionamento Relative e Absolute -->
+      <div class="card-review">
+        <div class="badge-nota">Nota 10!</div>
+        <h3>Análise da Semana: Far Cry 5</h3>
+        <p style="margin-top: 10px; font-size: 15px; line-height: 1.5; color: #ddd;">
+          Um dos mundos abertos mais imersivos e caóticos. Salve o jogo constantemente antes de enfrentar inimigos difíceis!
+        </p>
+      </div>
+
+      <!-- Flexbox -->
+      <h3 style="color: #333; margin-bottom: 15px; text-align: center;">Plataformas de Jogo</h3>
+      <div class="niveis-container">
+        <div class="caixa-flex">Caixa 1</div>
+        <div class="caixa-flex">Caixa 2</div>
+        <div class="caixa-flex">Caixa 3</div>
+      </div>
+
+      <!-- CSS Grid com 6 itens -->
+      <h3 style="color: #333; margin-bottom: 15px; border-top: 1px solid #eee; padding-top: 30px;">Próximos Lançamentos</h3>
+      <div class="grid-destaques">
+        <div class="item-destaque">Item 1</div>
+        <div class="item-destaque">Item 2</div>
+        <div class="item-destaque">Item 3</div>
+        <div class="item-destaque">Item 4</div>
+        <div class="item-destaque">Item 5</div>
+        <div class="item-destaque">Item 6</div>
+      </div>
+
+      <!-- Pseudo-classes, Botões e Animações -->
+      <div class="secao-interativa">
+        <h2 class="titulo-emoji">Minhas Séries Favoritas</h2>
+        
+        <!-- Lista Zebrada (Pseudo-classes) -->
+        <ul class="lista-series">
+          <li>1. Supernatural</li>
+          <li>2. The Big Bang Theory</li>
+          <li>3. Eu, a Patroa e as Crianças</li>
+          <li>4. Stranger Things</li>
+          <li>5. The Boys</li>
+        </ul>
+
+        <div style="text-align: center; margin-top: 40px;">
+          <h3 style="color: #333; margin-bottom: 15px;">Assine a Newsletter Semanal</h3>
+          
+          <div class="form-newsletter">
+            <input type="text" class="input-newsletter" placeholder="Digite seu melhor e-mail...">
+            <button class="btn-assinar">Inscrever-se</button>
+          </div>
+          
+          <div class="etiqueta-pulsar">CONTEÚDO GRÁTIS!</div>
+        </div>
+      </div>
+
+      <!-- Galeria Responsiva de 12 itens -->
+      <div style="margin-top: 50px; border-top: 1px solid #eee; padding-top: 30px;">
+        <h2 style="color: #333; text-align: center; margin-bottom: 20px;">Minha Galeria de Favoritos</h2>
+        
+        <div class="galeria-geek">
+          <div class="card-galeria">The Sims 4</div>
+          <div class="card-galeria">The Witcher 3</div>
+          <div class="card-galeria">Far Cry 5</div>
+          <div class="card-galeria">Supernatural</div>
+          <div class="card-galeria">The Big Bang Theory</div>
+          <div class="card-galeria">Eu, a Patroa e as Crianças</div>
+          <div class="card-galeria">O Senhor dos Anéis</div>
+          <div class="card-galeria">De Volta para o Futuro</div>
+          <div class="card-galeria">Kenan & Kel</div>
+          <div class="card-galeria">O Hobbit</div>
+          <div class="card-galeria">Interstellar</div>
+          <div class="card-galeria">The Last of Us</div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="area-footer">
+      <p>&copy; 2026 Blog Geek - Milena. Todos os direitos reservados.</p>
+    </footer>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Atividade 4 - Gap no Flexbox</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            padding: 20px;
+            margin-bottom: 30px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+
+        .sem-gap {
+            gap: 0;
+            background-color: #ffebee;
+        }
+
+
+        .gap-10 {
+            gap: 10px;
+            background-color: #e8f5e9;
+        }
+
+        .gap-30 {
+            gap: 30px;
+            background-color: #e3f2fd;
+        }
+
+
+        .item {
+            padding: 10px;
+            background-color: #1565c0;
+            color: white;
+            font-weight: bold;
+            border-radius: 4px;
+            text-align: center;
+            width: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <h2>1 - Sem gap (itens colados)</h2>
+    <div class="container sem-gap">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+    </div>
+
+    <h2>2 - Com gap de 10px</h2>
+    <div class="container gap-10">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+    </div>
+
+    <h2>3 - Com gap de 30px</h2>
+    <div class="container gap-30">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Atividade 5 - Flex-wrap</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            gap: 10px;
+            padding: 20px;
+            background-color: #e0e0e0;
+            margin-bottom: 40px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            max-width: 500px;
+        }
+
+        .sem-wrap {
+            flex-wrap: nowrap;
+            overflow-x: auto; /* Cria uma barra de rolagem embaixo para visualizar os itens escondidos */
+        }
+
+        .com-wrap {
+            flex-wrap: wrap;
+        }
+
+        .item {
+            width: 150px;
+            height: 80px;
+            flex-shrink: 0;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+        }
+
+        .c1 {
+            background-color: #d32f2f;
+        }
+
+        .c2 {
+            background-color: #c2185b;
+        }
+
+        .c3 {
+            background-color: #7b1fa2;
+        }
+
+        .c4 {
+            background-color: #303f9f;
+        }
+
+        .c5 {
+            background-color: #0288d1;
+        }
+
+        .c6 {
+            background-color: #00796b;
+        }
+
+        .c7 {
+            background-color: #388e3c;
+        }
+
+        .c8 {
+            background-color: #f57c00;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>1 - Sem wrap (todos na mesma linha)</h2>
+    <div class="container sem-wrap">
+        <div class="item c1">1</div>
+        <div class="item c2">2</div>
+        <div class="item c3">3</div>
+        <div class="item c4">4</div>
+        <div class="item c5">5</div>
+        <div class="item c6">6</div>
+        <div class="item c7">7</div>
+        <div class="item c8">8</div>
+    </div>
+
+    <h2>2 - Com wrap (quebrando para várias linhas)</h2>
+    <div class="container com-wrap">
+        <div class="item c1">1</div>
+        <div class="item c2">2</div>
+        <div class="item c3">3</div>
+        <div class="item c4">4</div>
+        <div class="item c5">5</div>
+        <div class="item c

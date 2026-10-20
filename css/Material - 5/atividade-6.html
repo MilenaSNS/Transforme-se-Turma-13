@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 6 - Galeria Flexbox</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .galeria {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .card {
+            width: 220px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.08);
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card p {
+            text-align: center;
+            padding: 15px;
+            margin: 0;
+            font-weight: bold;
+            color: #444;
+        }
+
+        @media (max-width: 550px) {
+            .galeria {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .card {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Minha Galeria Geek</h2>
+
+    <div class="galeria">
+
+        <div class="card">
+            <img src="imgs/the-sims-4.jpg" alt="The Sims">
+            <p>The Sims</p>
+        </div>
+
+        <div class="card">
+            <img src="imgs/The-Witcher-III.jpg" alt="The Witcher 3">
+            <p>The Witcher 3</p>
+        </div>
+
+        <div class="card">
+            <img src="imgs/Far-Cry-5.jpg" alt="Far Cry 5">
+            <p>Far Cry 5</p>
+        </div>
+
+        <div class="card">
+            <img src="imgs/Supernatural.jpg" alt="Supernatural">
+            <p>Supernatural</p>
+        </div>
+
+        <div class="card">
+            <img src="imgs/Tbby.jpg" alt="The Big Bang Theory">
+            <p>The Big Bang Theory</p>
+        </div>
+
+        <div class="card">
+            <img src="imgs/O-senhor-dos-aneis.jpg" alt="O Senhor dos Anéis">
+            <p>O Senhor dos Anéis</p>
+        </div>
+
+        <div class="card">
+            <img src="imgs/eu-a-patroa-e-as-criancas.jpg" alt="Eu, a Patroa e as Crianças">
+            <p>Eu, a Patroa e as Crianças</p>
+        </div>
+
+        <div class="card">
+            <img src="imgs/kenan-e-kel.jpg" alt="Kenan & Kel">
+            <p>Kenan & Kel</p>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

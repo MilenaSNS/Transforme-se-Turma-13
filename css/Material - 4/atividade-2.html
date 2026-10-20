@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Atividade 2</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #e0e0e0;
+            border: 1px solid #999;
+            margin-right: 10px;
+        }
+
+        /* Botão exclusivo para o :hover */
+        .btn-hover:hover {
+            background-color: blue;
+            color: white;
+        }
+
+        /* Botão exclusivo para o :active */
+        .btn-active:active {
+            transform: scale(0.9);
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            width: 250px;
+        }
+
+        li {
+            padding: 10px;
+            border: 1px solid #ccc;
+            margin-bottom: 2px;
+        }
+
+        li:nth-child(odd) {
+            background-color: lightgray;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid gray;
+            margin-top: 10px;
+        }
+
+        input:focus {
+            border-color: green;
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Botões</h2>
+    <button class="btn-hover">Botão Hover (Passe o mouse)</button>
+    <button class="btn-active">Botão Active (Clique)</button>
+
+    <h2>Lista</h2>
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+        <li>Item 5</li>
+        <li>Item 6</li>
+        <li>Item 7</li>
+        <li>Item 8</li>
+        <li>Item 9</li>
+        <li>Item 10</li>
+    </ul>
+
+    <h2>Formulário</h2>
+    <input type="text" placeholder="Digite algo...">
+
+</body>
+
+</html>
